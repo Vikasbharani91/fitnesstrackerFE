@@ -1,0 +1,20 @@
+
+
+.blog {
+    &__container {
+
+        margin: 20px;
+    }
+
+    &__featured-image {
+        width: 100%;
+        max-height: clamp(300px, 30vh, 500px);
+        object-fit: cover;
+    }
+
+    &__title {
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        font-weight: 500;
+        padding: 20px 0;
+    }
+}

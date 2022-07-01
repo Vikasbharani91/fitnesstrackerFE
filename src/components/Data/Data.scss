@@ -1,0 +1,59 @@
+
+
+.data {
+    &-stats {
+        &__container {
+            padding: 30px 20px;
+        }
+
+        &__title {
+            font-weight: 500;
+
+            &-subtitle {
+                font-weight: 200;
+            }
+        }
+
+        &__health {
+
+            &-list {
+                list-style: none;
+                padding: 0;
+                margin: 0 ;
+
+                &-item {
+
+                    display: flex;
+                    flex-direction: column;
+                    margin: 10px 0 0 0 ;
+                }
+            }
+            &-property {
+                // font-weight: 500;
+                font-size: clamp(1.2rem, 4vw,  2.2rem);
+                text-transform: capitalize;
+                &::after{
+                    content: ':';
+                }
+            }
+
+            &-value {
+                font-size: clamp(2.2rem, 8vw,  4.2rem);
+                font-weight: 100;
+            }
+        }
+    }
+
+    &__fab {
+        display: inline-block;
+        text-decoration: none;
+        position: fixed;
+        inset: auto 30px 30px auto;
+        color: #fff;
+        background: blue;
+        padding: 20px;
+        border-radius: 5px;
+        font-size: clamp(1.1rem, 3vw,  2rem);
+        box-shadow: 0 5px 30px -10px black;
+    }
+}

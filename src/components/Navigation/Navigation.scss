@@ -1,0 +1,41 @@
+@use "../../styles/mixins/media";
+@use "../../styles/mixins/grid";
+@use 'sass:map';
+
+.navigation {
+
+    &__container {
+        display: block;
+    }
+
+    &__list {
+        position: relative;
+        display: flex;
+        padding: 0;
+        justify-content: center;
+
+        @include media.media(map-get(grid.$breakpoints, 'medium')) {
+            justify-content: right;
+            margin-right: 30px;
+        }
+
+
+        @include media.media(map-get(grid.$breakpoints, 'large')) {
+            margin-top: 30px;
+        }
+
+        &-item {
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+    }
+
+    &__link {
+        padding: 5px;
+        border-radius: 4%;
+        margin: 0 6px;
+        text-decoration: none;
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,15 @@
+@use './grid';
+@use 'sass:map';
+
+@mixin media($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @include media(map-get(grid.$breakpoints, 'large')) {
+    @content;
+  }
+}
+
