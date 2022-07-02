@@ -15,7 +15,7 @@ export default function Data() {
         c.bloodGlucose && (c.bloodGlucose += value.bloodGlucose ?? 0);
         
         return c;
-    }, {bpm:0, height:0, weight:0, steps:0, bloodGlucose: 0})).filter(([_key, value]) => !!value);
+    }, {bpm:0, height:0, weight:0, steps:0, bloodGlucose: 0, bmi: 0})).filter(([_key, value]) => !!value);
     
     const showFAB = !matchPath('/data/form', useLocation().pathname);
 

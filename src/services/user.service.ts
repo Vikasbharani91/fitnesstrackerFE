@@ -8,15 +8,16 @@ export default class UserService {
 
         try {
 
-            const token = await fetch('https://wefitnesstracker.herokuapp.com/fitworld/authenticate', {
+            const token = await fetch('https://wefitnesstracker.herokuapp.com/token', {
                 method: 'post',
                 body: JSON.stringify({userName, password}),
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
                 }
             }).then(response => response.text())
     
             const decoded = JWTDecode<UserContextType>(token);
+            decoded.dateOfBirth = new Date(decoded.dateOfBirth);
             return ({
                 ...decoded,
                 token
