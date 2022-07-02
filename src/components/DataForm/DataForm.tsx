@@ -1,4 +1,6 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { UserContext } from '../../contexts/user-context';
 import useHealthData from '../../helpers/healthdata.customHook';
 import HealthDataService, { HealthDataPayload } from '../../services/healthdata.service';
 import './DataForm.scss';
@@ -9,6 +11,7 @@ type InputsType = {
 
 export default function DataForm () {
     const healthData = useHealthData();
+    const userObj = useContext(UserContext);
     let height = '';
     if (healthData.length) {
         height = healthData[healthData.length - 1].height.toString();
@@ -25,7 +28,8 @@ export default function DataForm () {
     let obj : HealthDataPayload = {
         height: parseFloat(parseFloat(height as string).toFixed(3)),
         weight: 0,
-        steps: 0
+        steps: 0,
+        bmi: 0
     };
     Object.entries(inputs).forEach(([key, value]) => {
         if (key && value && value !== '') {
@@ -39,11 +43,14 @@ export default function DataForm () {
     return obj
    }
 
+   const navigate = useNavigate();
+
     const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(processInputs(inputs));
         try {
-            await HealthDataService.PostHealthData(processInputs(inputs))
+            await HealthDataService.PostHealthData(processInputs(inputs), userObj);
+            navigate('/')
         } catch(e) {
             console.error(e)
         }

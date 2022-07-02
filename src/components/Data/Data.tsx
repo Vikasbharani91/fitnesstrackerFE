@@ -27,7 +27,7 @@ export default function Data() {
             <h2 className="data-stats__title">Current Statistics</h2>
             <p className="data-stats__title-subtitle">Currently showing Average Details for {healthData.length} day{healthData.length > 1 && 's'}</p>
             <ul className="data-stats__health-list">
-            { processedResults.map(([key, value], index) => <li className="data-stats__health-list-item" key={key}><span className="data-stats__health-property">{key}</span>{ '  ' }<span className="data-stats__health-value">{value && value/healthData.length}</span></li>) }
+            { processedResults.map(([key, value], index) => <li className="data-stats__health-list-item" key={key}><span className="data-stats__health-property">{key}</span>{ '  ' }<span className="data-stats__health-value">{value && typeof value === 'number' && value/healthData.length}</span></li>) }
             </ul>
 
         </div>

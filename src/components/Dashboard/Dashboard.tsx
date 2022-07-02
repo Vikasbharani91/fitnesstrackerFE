@@ -1,5 +1,6 @@
 import useHealthData from "../../helpers/healthdata.customHook";
 import { HealthDataType } from "../../services/healthdata.service";
+import calculateBMI from "../../utils/bmi";
 import Graph from "../common/Graph/Graph";
 
 
@@ -10,13 +11,26 @@ export default function Dashboard() {
 
     const data = healthData.map((item, index) => ({...item, date: makeDate(new Date((Date.now() - ((healthData.length - index) * 86400000))))}))
 
-    const getBMI = (data: HealthDataType[]) => data.map((item, index) => ({...item, bmi: (item.weight/(item.height / 100 * item.height / 100)).toFixed(2), date: makeDate(new Date((Date.now() - ((healthData.length - index) * 86400000))))})
+    const getBMI = (data: HealthDataType[]) => data.map((item, index) => ({...item, bmi: (calculateBMI(item)).toFixed(2), date: makeDate(new Date((Date.now() - ((healthData.length - index) * 86400000))))})
     )
+
+    console.log(data)
+
+    const bp = data.map(({bp}) => {
+        if (bp) {
+            return {
+                lower: bp.split('/')[1],
+                upper: bp.split('/')[0]
+            }
+        }
+        return undefined
+    })
     
     return <>
         <h1 className="page-title">Trends</h1>
         <Graph area data={data} lineKey="steps" title={`Steps taken in last ${healthData.length} days`}></Graph>
         <Graph area data={getBMI(healthData)} lineKey="bmi" title="Body-Mass index" secondaryLineKey="weight"></Graph>
+        <Graph area data={bp} lineKey="lower" secondaryLineKey="upper" title="Blood Pressure"></Graph>
         <Graph data={data} lineKey="weight" title="Weight log"></Graph>
     </>
 }
