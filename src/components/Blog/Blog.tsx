@@ -9,11 +9,11 @@ import './Blog.scss';
 export default function Blog () {
     const [blog, setBlog] = useState<ArticleCardProps | null>(null);
 
-    const blogId = useParams<string>().toString();
+    const { blogId } = useParams<{ blogId: string }>();
 
     useEffect(() => {
         async function getBlogDetails() {
-            setBlog(await BlogService.GetBlogDetails(blogId))
+            setBlog(await BlogService.GetBlogDetails(blogId ?? ''))
         }
 
         getBlogDetails();

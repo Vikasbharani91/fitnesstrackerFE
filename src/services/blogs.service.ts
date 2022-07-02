@@ -25,7 +25,7 @@ class BlogService {
 
     static GetBlogDetails = async (blogId: string) => {
 
-        const blog = await fetch(`${BlogService.serviceUrl}blog/${blogId}`).then(res => res.json() as Promise<BlogType>);
+        const blog = await fetch(`${BlogService.serviceUrl}blogById/${blogId}`).then(res => res.json() as Promise<BlogType>);
 
         return {
             ...blog,

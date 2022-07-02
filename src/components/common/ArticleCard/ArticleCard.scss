@@ -9,11 +9,13 @@
         text-decoration: none;
         font-size: 1.1rem;
         display: inline-block;
-        &:not(:last-child) {
-            .article-card__link-container {    
-                border-bottom: 0;
-            }
-        }
+
+        margin-bottom: 20px;
+        // &:not(:last-child) {
+        //     .article-card__link-container {    
+        //         border-bottom: 0;
+        //     }
+        // }
 
         &:hover .article-card__link-container {
             box-shadow: 0 5px 30px -10px #000;
@@ -38,7 +40,7 @@
                 height: calc(60vw);
 
                 @include media.media(map-get(grid.$breakpoints, 'medium')) {
-                    height: 100%;
+                    height: auto;
                     min-width: 200px;
                     max-width: 350px;
                 }
@@ -56,7 +58,8 @@
     }
 
     &__text {
-        padding: 10px;
+        padding: 10px 20px;
+        flex-grow: 1;
     }
 
 }
