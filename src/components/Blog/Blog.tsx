@@ -23,7 +23,7 @@ export default function Blog () {
         <img className="blog__featured-image" src={blog?.imageSrc} alt={`featured for ${blog?.title}`}></img>
         <h2 className="blog__title">{blog?.title}</h2>
         <div className="blog__content" dangerouslySetInnerHTML={{__html: blog?.content ?? ''}}></div>
-        <div className="blog__dates_section">
+        <div className="blog__date-section">
             <p className="blog__date-type">Published on: <span className="blog__date-value">{blog?.datePublished.toDateString()}</span></p>
             <p className="blog__date-type">Modified on: <span className="blog__date-value">{blog?.dateModified.toDateString()}</span></p>
         </div>

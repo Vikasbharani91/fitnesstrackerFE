@@ -1,4 +1,5 @@
 import { ArticleCardProps } from "../components/common/ArticleCard/ArticleCard";
+import dateReader from "../utils/dateReader";
 
 
 type BlogType = {
@@ -18,8 +19,8 @@ class BlogService {
 
         return data.map(item => ({
             ...item,
-            dateModified: new Date(item.dateModified),
-            datePublished: new Date(item.datePublished)
+            dateModified: dateReader(item.dateModified),
+            datePublished: dateReader(item.datePublished)
         })) as ArticleCardProps[];
     }
 
@@ -29,8 +30,8 @@ class BlogService {
 
         return {
             ...blog,
-            dateModified: new Date(blog.dateModified),
-            datePublished: new Date(blog.datePublished)
+            dateModified: dateReader(blog.dateModified),
+            datePublished: dateReader(blog.datePublished)
         }
     }
 }
