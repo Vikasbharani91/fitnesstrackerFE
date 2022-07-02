@@ -11,6 +11,8 @@ import { UserContext, UserContextType } from './contexts/user-context';
 import { useEffect, useState } from 'react';
 import UserService from './services/user.service';
 import Blog from './components/Blog/Blog';
+import Consultants from './components/Consultants/Consultants';
+import Consultant from './components/Consultant/Consultant';
 
 function App() {
   const [userObj, setUserObj] = useState<null | UserContextType>(null);
@@ -35,6 +37,9 @@ function App() {
           </Route>
           <Route path='/blogs' element={<Blogs />}>
             <Route path=':blogId' element={<Blog />}></Route>
+          </Route>
+          <Route path='/consultants' element={<Consultants />}>
+            <Route path=':consultantId' element={<Consultant />}></Route>
           </Route>
           <Route path='*' element={<h2>Nothing Here Mate</h2>}></Route>
         </Routes>

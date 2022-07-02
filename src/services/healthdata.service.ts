@@ -6,7 +6,6 @@ export type HealthDataType = {
     steps: number,
     bpm?: number,
     bloodGlucose?: number,
-    bmi: number,
     [key: string]: number | undefined
 }
 
@@ -30,17 +29,21 @@ export default class HealthDataService {
             return [];
         }
 
-       return await fetch(`${HealthDataService.apiUrl}health/history`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${userObj.token}`
+        const ageCalculator = (dateOfBirth: Date) => {
+            return (new Date().getFullYear() - dateOfBirth.getFullYear())
         }
-       }).then(res => res.json() as Promise<HealthDataType[]>);
-
+        
+        const tempData: HealthDataType = {
+            height: 170,
+            weight: 80,
+            steps: 4090,
+            age: ageCalculator(userObj.dateOfBirth),
+        }
+        return ([tempData, {...tempData, weight: 79, steps: 3060}, {...tempData, weight: 79, steps: 3008}, {...tempData, weight: 81, steps: 5110}])
     }
 
     static PostHealthData = async (data: HealthDataPayload) => {
-        fetch(`${HealthDataService.apiUrl}health/addHealthData`, {
+        fetch(`${HealthDataService.apiUrl}/health/addHealthData`, {
             method: 'POST',
             body: JSON.stringify(data),
         })

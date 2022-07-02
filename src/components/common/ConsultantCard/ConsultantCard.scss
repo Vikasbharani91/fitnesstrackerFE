@@ -1,0 +1,56 @@
+@use "../../../styles/mixins/media";
+@use "../../../styles/mixins/grid";
+@use 'sass:map';
+
+
+.consultant-card {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        color: initial;
+        overflow: hidden;
+        width: clamp(300px, 100%, 450px);
+        margin: 20px;
+        transition: box-shadow 0.3s;
+        @include media.media(map-get(grid.$breakpoints, 'medium')) {
+
+            &:nth-child(3n+2) {
+                margin: 20px 0;
+            }
+
+            width: calc(33% - 25px)
+        }
+
+        &:where(:hover, :active) {
+            box-shadow: 0 5px 30px -10px #000;
+            z-index: 2;
+
+        }
+
+    }
+
+
+    &__image {
+        max-width: 100%;
+        flex-grow: 1;
+        object-fit: cover;
+    }
+
+    &__details {
+        background-color: #eee;
+        padding: 20px;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    &__title {
+        text-transform: capitalize;
+        font-size: clamp(2em, 4%, 3em);
+        font-weight: 400;
+        position: absolute;
+        top: clamp(-6rem, -8%, -4em);
+        color: #fff;
+        text-shadow: 0 0 20px #000;
+    }
+}

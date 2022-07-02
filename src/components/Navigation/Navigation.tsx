@@ -22,7 +22,10 @@ export default function Navigation() {
             <NavLink className="navigation__link" style={activeStyles} to='/data'>Data</NavLink> | {' '}
         </li>
         <li className="navigation__list-item">
-            <NavLink className="navigation__link" style={activeStyles} to='/blogs'>Blogs</NavLink>
+            <NavLink className="navigation__link" style={activeStyles} to='/blogs'>Blogs</NavLink> | {' '}
+        </li>
+        <li className="navigation__list-item">
+            <NavLink className="navigation__link" style={activeStyles} to='/consultants'>Consultants</NavLink>
         </li>
     </ul>
     </nav> )
