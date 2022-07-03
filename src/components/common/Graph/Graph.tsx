@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart, Bar, BarChart } from 'recharts';
 import { MyThemeContext } from '../../../contexts/theme-context';
 import './Graph.scss';
 
@@ -8,6 +8,7 @@ type Props = {
     lineKey: string,
     title?: string,
     area?: boolean,
+    bar?: boolean,
     secondaryLineKey?: string,
     tertiaryLineKey?: string,
 }
@@ -52,18 +53,44 @@ export default function Graph (props: Props) {
                 
                 
                 </AreaChart>)
-            : (
-            <LineChart width={400} height={400} data={props.data}>
-                <Line type="monotone" dataKey={props.lineKey} stroke={theme.graphColor} />
-                {props.secondaryLineKey && <Line type="monotone" dataKey={props.secondaryLineKey} stroke={theme.graphColorSeconday} />}
-                {props.tertiaryLineKey && <Line type="monotone" dataKey={props.tertiaryLineKey} stroke={theme.graphColorTertiary} />}
-                <CartesianGrid stroke="#ccc" />
-                <XAxis dataKey="date" />
-                <YAxis />
-                <Tooltip />
+            : props.bar ? <BarChart width={400} height={400} data={props.data}>
+                
+                    <defs>
+                        <linearGradient id="colorPrimary" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor={theme.graphColor} stopOpacity={1}/>
+                        <stop offset="95%" stopColor={theme.graphColor} stopOpacity={0}/>
+                        </linearGradient>
+                        <linearGradient id="colorSecondary" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor={theme.graphColorSeconday} stopOpacity={1}/>
+                        <stop offset="95%" stopColor={theme.graphColorSeconday} stopOpacity={0}/>
+                        </linearGradient>
+                        <linearGradient id="colorTertiary" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor={theme.graphColorTertiary} stopOpacity={1}/>
+                        <stop offset="95%" stopColor={theme.graphColorTertiary} stopOpacity={0}/>
+                        </linearGradient>
+                    </defs>
+                    <Bar type="monotone" dataKey={props.lineKey} fill="url(#colorPrimary)" />
+                    {props.secondaryLineKey && <Bar type="monotone" dataKey={props.secondaryLineKey} fill="url(#colorSecondary)" />}
+                    {props.tertiaryLineKey && <Bar type="monotone" dataKey={props.tertiaryLineKey} fill="url(#colorTertiary)" />}
+                    <CartesianGrid strokeDasharray="4 4" />
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip />
 
 
-            </LineChart>)
+                </BarChart>
+                : (
+                <LineChart width={400} height={400} data={props.data}>
+                    <Line type="monotone" dataKey={props.lineKey} stroke={theme.graphColor} />
+                    {props.secondaryLineKey && <Line type="monotone" dataKey={props.secondaryLineKey} stroke={theme.graphColorSeconday} />}
+                    {props.tertiaryLineKey && <Line type="monotone" dataKey={props.tertiaryLineKey} stroke={theme.graphColorTertiary} />}
+                    <CartesianGrid stroke="#ccc" />
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip />
+    
+    
+                </LineChart>)
             }
         </ResponsiveContainer>
         <h4 className='graph__title'>{props.title ?? props.lineKey}</h4>

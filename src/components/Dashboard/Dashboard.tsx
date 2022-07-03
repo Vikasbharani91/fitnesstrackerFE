@@ -29,7 +29,7 @@ export default function Dashboard() {
         <h1 className="page-title">Trends</h1>
         <Graph area data={data} lineKey="steps" title={`Steps taken in last ${healthData.length} days`}></Graph>
         <Graph area data={getBMI(healthData)} lineKey="bmi" title="Body-Mass index" secondaryLineKey="weight"></Graph>
-        <Graph area data={bp} lineKey="lower" secondaryLineKey="upper" title="Blood Pressure"></Graph>
-        <Graph data={data} lineKey="weight" title="Weight log"></Graph>
+        <Graph area data={bp} lineKey="lower" secondaryLineKey="upper" title="Blood Pressure (mmHg)"></Graph>
+        <Graph data={data} bar lineKey="weight" title="Weight log (Kg)"></Graph>
     </>
 }

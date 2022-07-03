@@ -80,11 +80,11 @@ export default function DataForm () {
 
             
             <label className="data-form__form-label" htmlFor="bloodGlucose">Blood Glucose Level</label>
-            <input className="data-form__form-input" type="number" name="bloodGlucose" id="bloodGlucose" step=".01"/>
+            <input className="data-form__form-input" type="number" name="bloodGlucose" id="bloodGlucose" step=".01"/>mg/dL
             <label className="data-form__form-label" htmlFor="bpm">Heart Rate (beats per minute)</label>
             <input className="data-form__form-input" type="number" name="bpm" id="bpm" />bpm
             <label className="data-form__form-label" htmlFor="bp">Blood Pressure (high/low)</label>
-            <input className="data-form__form-input" type="text" name="bp" id="bp" pattern='[0-9]+\/[0-9]+' placeholder='120/80' />
+            <input className="data-form__form-input" type="text" name="bp" id="bp" pattern='[0-9]+\/[0-9]+' placeholder='120/80' />mmHg
             <button className="data__fab" type="submit">Submit</button>
         </form>
     </div>
