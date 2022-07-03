@@ -6,8 +6,7 @@ import Graph from "../common/Graph/Graph";
 
 export default function Dashboard() {
     const healthData = useHealthData();
-
-    const makeDate = (date: Date) => `${date.getDate()}-${date.getMonth() + 1}`;
+    const makeDate = (date: Date) => `${date.toDateString().split(' ')[1]}\n${parseInt(date.toDateString().split(' ')[2])}`;
 
     const data = healthData.map((item, index) => ({...item, date: makeDate(new Date((Date.now() - ((healthData.length - index) * 86400000))))}))
 

@@ -5,7 +5,7 @@ export type ConsultantType = {
     name: string,
     age: string,
     yoe: string,
-    totalClients: string,
+    totalClient: string,
     description: string,
     imageSrc: string
 }

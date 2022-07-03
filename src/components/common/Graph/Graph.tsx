@@ -28,13 +28,27 @@ export default function Graph (props: Props) {
                     bottom: 0,
                 }}
                 >
+                <defs>
+                    <linearGradient id="colorPrimary" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor={theme.graphColor} stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor={theme.graphColor} stopOpacity={0}/>
+                    </linearGradient>
+                    <linearGradient id="colorSecondary" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor={theme.graphColorSeconday} stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor={theme.graphColorSeconday} stopOpacity={0}/>
+                    </linearGradient>
+                    <linearGradient id="colorTertiary" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor={theme.graphColorTertiary} stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor={theme.graphColorTertiary} stopOpacity={0}/>
+                    </linearGradient>
+                </defs>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" />
                 <YAxis />
                 <Tooltip />
-                <Area type="monotone" dataKey={props.lineKey} stackId="1" stroke={theme.graphColor} fill={theme.graphColor} />
-                {props.secondaryLineKey && <Area type="monotone" dataKey={props.secondaryLineKey} stackId="1" stroke={theme.graphColorSeconday} fill={theme.graphColorSeconday} />}
-                {props.tertiaryLineKey && <Area type="monotone" dataKey={props.tertiaryLineKey} stackId="1" stroke={theme.graphColorTertiary} fill={theme.graphColorTertiary} />}
+                <Area type="monotone" dataKey={props.lineKey} stackId="1" stroke={theme.graphColor} fill="url(#colorPrimary)" />
+                {props.secondaryLineKey && <Area type="monotone" dataKey={props.secondaryLineKey} stackId="1" stroke={theme.graphColorSeconday} fill="url(#colorSecondary)" />}
+                {props.tertiaryLineKey && <Area type="monotone" dataKey={props.tertiaryLineKey} stackId="1" stroke={theme.graphColorTertiary} fill="url(#colorTertiary)" />}
                 
                 
                 </AreaChart>)

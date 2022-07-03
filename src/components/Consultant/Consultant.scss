@@ -13,7 +13,6 @@
         max-width: 100%;
         height: clamp(300px, 100vw, 500px);;
         object-fit: cover;
-        // margin: 0 auto;
         object-position: top;
         display: inline-block;
         // transition: height 0.4s linear 0;
@@ -32,8 +31,6 @@
         text-transform: capitalize;
         font-size: clamp(2.2rem, 8vw, 4.2rem);
         font-weight: 100;
-        // text-align: center;
-        // margin: 10px auto 50px;
     }
 
     &__intro {
@@ -54,6 +51,6 @@
 
     &__desc {
         font-size: 1.3em;
-
+        font-weight: 300;
     }
 }

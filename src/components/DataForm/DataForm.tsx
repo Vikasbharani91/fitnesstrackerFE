@@ -73,14 +73,14 @@ export default function DataForm () {
             <label className="data-form__form-label" htmlFor="steps">Steps</label>
             <input className="data-form__form-input" required type="number" name="steps" id="steps" />
             <label className="data-form__form-label" htmlFor="weight">Weight</label>
-            <input className="data-form__form-input" required type="number" name="weight" id="weight" />Kgs
+            <input className="data-form__form-input" required type="number" name="weight" id="weight" step=".01"/>Kgs
             <label className="data-form__form-label" htmlFor="height">height</label>
-            <input className="data-form__form-input" required type="number" name="height" defaultValue={height} id="height" />cms
+            <input className="data-form__form-input" required type="number" name="height" defaultValue={height} id="height" step=".01"/>cms
             <p className='data-form__form-separator'>Optional Data</p>
 
             
             <label className="data-form__form-label" htmlFor="bloodGlucose">Blood Glucose Level</label>
-            <input className="data-form__form-input" type="number" name="bloodGlucose" id="bloodGlucose" />
+            <input className="data-form__form-input" type="number" name="bloodGlucose" id="bloodGlucose" step=".01"/>
             <label className="data-form__form-label" htmlFor="bpm">Heart Rate (beats per minute)</label>
             <input className="data-form__form-input" type="number" name="bpm" id="bpm" />bpm
             <label className="data-form__form-label" htmlFor="bp">Blood Pressure (high/low)</label>

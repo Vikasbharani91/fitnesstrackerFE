@@ -11,7 +11,7 @@ export default function ConsultantCard(props: ConsultantType) {
             <h4 className="consultant-card__title">{props.name}</h4>
             <div className="consultant-card__experience">
                 <p className="consultant-card__type">Experience: <span>{props.yoe}</span>{' '}years</p>
-                <p className="consultant-card__type">Clients: <span>{props.totalClients}</span></p>
+                <p className="consultant-card__type">Clients: <span>{props.totalClient}</span></p>
             </div>
             <p className="consultant-card__desc">{props.description.substring(0, 150)}...</p>
         </div>

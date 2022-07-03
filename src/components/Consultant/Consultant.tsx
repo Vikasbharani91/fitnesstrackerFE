@@ -23,7 +23,7 @@ export default function Consultant() {
                 <h2 className="consultant__title">{consultant?.name}</h2>
                 <div className="consultant__experience">
                     <p className="consultant__experience-type">Experience: <span>{consultant?.yoe}</span>{' '}years</p>
-                    <p className="consultant__experience-type">Clients: <span>{consultant?.totalClients}</span></p>
+                    <p className="consultant__experience-type">Clients: <span>{consultant?.totalClient}</span></p>
                 </div>
             </div>
             <p className="consultant__desc">{consultant?.description}</p>
