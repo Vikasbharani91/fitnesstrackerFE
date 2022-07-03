@@ -24,7 +24,7 @@ export default function Graph (props: Props) {
                 data={props.data}
                 margin={{
                     top: 10,
-                    right: 0,
+                    right: 30,
                     left: 0,
                     bottom: 0,
                 }}
@@ -74,7 +74,7 @@ export default function Graph (props: Props) {
                     {props.tertiaryLineKey && <Bar type="monotone" dataKey={props.tertiaryLineKey} fill="url(#colorTertiary)" />}
                     <CartesianGrid strokeDasharray="4 4" />
                     <XAxis dataKey="date" />
-                    <YAxis />
+                    <YAxis  scale="auto" />
                     <Tooltip />
 
 

@@ -15,11 +15,12 @@ export default function Dashboard() {
 
     console.log(data)
 
-    const bp = data.map(({bp}) => {
+    const bp = data.map(({bp}, index) => {
         if (bp) {
             return {
                 lower: bp.split('/')[1],
-                upper: bp.split('/')[0]
+                upper: bp.split('/')[0],
+                date: makeDate(new Date((Date.now() - ((healthData.length - index) * 86400000))))
             }
         }
         return undefined
