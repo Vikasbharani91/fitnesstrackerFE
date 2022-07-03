@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useEffect, useState } from 'react';
+import { FormEvent, useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { UserContext } from '../../contexts/user-context';
 import useHealthData from '../../helpers/healthdata.customHook';
@@ -19,6 +19,14 @@ export default function DataForm () {
     const [inputs, setInputs] = useState<InputsType>({
         height
     });
+
+    const containerEl = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        containerEl.current?.scrollIntoView({
+            behavior: 'smooth'
+        });
+    })
 
     useEffect(() => {
         setInputs({height})
@@ -65,13 +73,13 @@ export default function DataForm () {
     return <>
     
     <hr />
-    <div className="data-form__container">
+    <div className="data-form__container" ref={containerEl}>
 
         
         <h3 className="data-form__title">Track Data for today</h3>
         <form className="data-form__form" onSubmit={submitHandler} onChange={handleFormChange}>
             <label className="data-form__form-label" htmlFor="steps">Steps</label>
-            <input className="data-form__form-input" required type="number" name="steps" id="steps" />
+            <input className="data-form__form-input" autoFocus required type="number" name="steps" id="steps" />
             <label className="data-form__form-label" htmlFor="weight">Weight</label>
             <input className="data-form__form-input" required type="number" name="weight" id="weight" step=".01"/>Kgs
             <label className="data-form__form-label" htmlFor="height">height</label>
