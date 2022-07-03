@@ -47,9 +47,9 @@ export default function Graph (props: Props) {
                 <XAxis dataKey="date" />
                 <YAxis />
                 <Tooltip />
-                <Area type="monotone" dataKey={props.lineKey} stackId="1" stroke={theme.graphColor} fill="url(#colorPrimary)" />
-                {props.secondaryLineKey && <Area type="monotone" dataKey={props.secondaryLineKey} stackId="1" stroke={theme.graphColorSeconday} fill="url(#colorSecondary)" />}
-                {props.tertiaryLineKey && <Area type="monotone" dataKey={props.tertiaryLineKey} stackId="1" stroke={theme.graphColorTertiary} fill="url(#colorTertiary)" />}
+                <Area type="monotone" dataKey={props.lineKey} stroke={theme.graphColor} fill="url(#colorPrimary)" />
+                {props.secondaryLineKey && <Area type="monotone" dataKey={props.secondaryLineKey} stroke={theme.graphColorSeconday} fill="url(#colorSecondary)" />}
+                {props.tertiaryLineKey && <Area type="monotone" dataKey={props.tertiaryLineKey} stroke={theme.graphColorTertiary} fill="url(#colorTertiary)" />}
                 
                 
                 </AreaChart>)
